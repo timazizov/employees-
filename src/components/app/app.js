@@ -110,7 +110,7 @@ class App extends Component {
         const {data, term, filter} = this.state
 
         // Объединение двух функций в одну строчку, в данном случае наши данные проходят две фильтрации
-        const visibleData = this.filterPost(this.searchEmp(data, tenpxrm), filter);
+        const visibleData = this.filterPost(this.searchEmp(data, term), filter);
         return (
             <div className="app">
                 <AppInfo employees={employees} increased_employees={increased_employees}/>
