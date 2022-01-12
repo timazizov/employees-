@@ -1,15 +1,19 @@
-import EmployersListItem from "../employers-list-item/employers-list-item";
-import './employers-list.css';
+import EmployeesListItem from "../employees-list-item/employees-list-item";
 
-const EmployersList = ({data}) => {
+import './employees-list.css';
+
+const EmployeesList = ({data, onDelete, onToggleProp}) => {
 
     const elements = data.map(item => {
-        // Диструктуризация item когда мы делим его на две части: в одной id, в другой все оставшиеся
-        const {id, ...itemPros} = item;
+        const {id, ...itemProps} = item;
         return (
-            <EmployersListItem key={id} {...itemPros}/>
+            <EmployeesListItem 
+                key={id} 
+                {...itemProps}
+                onDelete={() => onDelete(id)}
+                onToggleProp={(e) => onToggleProp(id, e.currentTarget.getAttribute('data-toggle'))}/>
         )
-    });
+    })
 
     return (
         <ul className="app-list list-group">
@@ -18,4 +22,4 @@ const EmployersList = ({data}) => {
     )
 }
 
-export default EmployersList;
+export default EmployeesList;
